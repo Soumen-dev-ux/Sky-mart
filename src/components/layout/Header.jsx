@@ -1,0 +1,13 @@
+import { Heart, Menu, Search, ShoppingCart, Sparkles } from 'lucide-react'
+import { useShop } from '../../context/ShopContext'
+
+export default function Header({ onMenu, onWishlist, onAccount, onCart }) {
+  const { query, setQuery, liked, cartCount, user } = useShop()
+  return <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
+    <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-8">
+      <div className="flex items-center gap-6"><button onClick={onMenu} className="rounded-lg p-1.5 hover:bg-slate-100 lg:hidden"><Menu size={22}/></button><a href="#top" className="flex items-center gap-2 text-xl font-black"><span className="grid h-8 w-8 place-items-center rounded-lg bg-indigo-600 text-sm text-white shadow-md">✦</span>Sky<span className="text-indigo-600">Mart</span></a><nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 lg:flex"><a href="#top" className="hover:text-indigo-600">Home</a><a href="#shop" className="hover:text-indigo-600">Shop</a><a href="#deals" className="flex items-center gap-1 text-rose-600 hover:text-rose-700"><Sparkles size={14}/>Today's Deals</a><a href="#footer" className="hover:text-indigo-600">About</a></nav></div>
+      <div className="relative hidden max-w-xs flex-1 md:block"><Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={16}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search products..." className="w-full rounded-full border border-slate-200 bg-slate-50 py-2 pl-9 pr-4 text-xs outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"/></div>
+      <div className="flex items-center gap-2"><button onClick={onWishlist} className="relative rounded-lg p-2 text-slate-600 hover:bg-slate-100"><Heart size={20}/>{liked.length>0&&<span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-rose-500 text-[10px] font-bold text-white">{liked.length}</span>}</button><button onClick={onAccount} className="flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3.5 py-1.5 text-xs font-bold text-indigo-700 hover:bg-indigo-100"><span className="grid h-5 w-5 place-items-center rounded-full bg-indigo-600 text-[10px] text-white">{user.name.charAt(0)}</span><span className="hidden sm:inline">{user.name.split(' ')[0]}</span></button><button onClick={onCart} className="relative flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-bold text-white shadow-md hover:bg-indigo-700"><ShoppingCart size={16}/>Cart{cartCount>0&&<span className="rounded-full bg-white/25 px-1.5">{cartCount}</span>}</button></div>
+    </div>
+  </header>
+}

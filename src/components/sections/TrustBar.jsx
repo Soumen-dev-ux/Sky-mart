@@ -1,0 +1,3 @@
+import { RotateCcw, ShieldCheck, Star, Truck } from 'lucide-react'
+const items=[[Truck,'Fast Delivery'],[ShieldCheck,'Safe Payments'],[RotateCcw,'7-Day Returns'],[Star,'Verified Products']]
+export default function TrustBar(){return <section className="border-b bg-white px-4 py-4 text-xs font-semibold text-slate-600"><div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 text-center sm:grid-cols-4">{items.map(([Icon,label])=><div key={label} className="flex items-center justify-center gap-2"><Icon size={16} className={label==='Verified Products'?'text-amber-500':'text-indigo-600'}/>{label}</div>)}</div></section>}
