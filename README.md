@@ -123,15 +123,3 @@ In the project directory, you can run:
 | `npm run preview` | Locally preview the production build. |
 
 ---
-
-## 💡 Key Design Decisions & State Management
-
-- **Centralized State**: The `ShopContext` provides unified state management for authentication, cart items, wishlist, search query, selected category, product sorting, and user order history.
-- **Component Modularization**: Components are organized cleanly into `auth`, `common`, `layout`, `sections`, and `modals` for maximum readability and maintainability.
-- **Responsive-First Design**: Mobile navigation and interactive drawers provide an intuitive mobile app-like experience.
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
